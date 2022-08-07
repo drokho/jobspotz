@@ -1,0 +1,143 @@
+:root {
+    --button: #0c7aef;
+    --button-hover: #1c68ba;
+    --delete: transparent;
+    --delete-hover: red;
+    --button-text: #fff;
+    --input-bg: #efefef;
+    --success: #2db42d;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    padding: 20px 0;
+    background-color: #ccc;
+    background-image: url(/images/header-bg.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 0;
+    height: 100px;
+    background-image: url(/images/jobspotz-logo.png);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.content-container {
+    padding: 20px;
+}
+
+.job-form input {
+    width: calc(100% - 120px);
+}
+
+.job-posting {
+    border-bottom:  1px solid #000;
+}
+
+.job-posting > span {
+    width: calc(100% - 33px);
+    display: inline-block;
+}
+
+.job-posting input[type="checkbox"] {
+    display: none;
+}
+
+.apply-button {
+    margin: 5px 10px 5px 0;
+    padding: 5px;
+    background-color: var(--button);
+    color: var(--button-text);
+    width: 100px;
+    text-align: center;
+}
+
+.apply {
+    display: inline-block;
+}
+
+.applied {
+    display: none;
+    background-color: var(--success);
+}
+
+
+
+input:checked + .apply-button.apply {
+    display: none;
+}
+
+input:checked + .apply-button.apply + .applied {
+    display: inline-block;
+}
+
+.job-form button {
+    width: 100px;
+}
+
+input,
+button {
+    padding: .6rem;
+    border: none;
+}
+
+input {
+    background-color: var(--input-bg);
+}
+
+button {
+    margin: 1rem 0;
+    background-color: var(--button);
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+li input {
+    display: inline-block;
+    margin-right: .6rem;
+}
+
+.delete {
+    margin: 5px 0 5px 5px;
+    padding: 0px 6px;
+    font-size: 25px;
+    background-color: var(--delete);
+    color: var(--delete-hover);
+    border-left: 1px solid #000;
+    position: relative;
+    bottom: -4px;
+}
+
+.delete:hover {
+    background-color: var(--delete-hover);
+    color: var(--button-text);
+    border-left-color: var(--delete);
+}
