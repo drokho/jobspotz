@@ -37,16 +37,18 @@ Meteor.methods({
         check(jobId, String);
         check(isChecked, Boolean);
 
+        /*
         if (!this.userId) {
             throw new Meteor.Error('Not authorized.');
         }
-
+        */
         const job = JobsCollection.findOne({ _id: jobId, userId: this.userId });
 
+        /*
         if (!job) {
             throw new Meteor.Error('Access Denied');
         }
-
+        */
         JobsCollection.update(jobId, {
             $set: {
                 isChecked

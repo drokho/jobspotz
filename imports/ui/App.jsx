@@ -21,7 +21,8 @@ export const App = () => {
     const user = useTracker(() => Meteor.user());
     const [hideApplied, setHideApplied] = useState(false);
     const hideAppliedFilter = { isChecked: { $ne: true } };
-    const userFilter = user ? {userId: user._id } : {};
+    //const userFilter = user ? {userId: user._id } : {};
+    const userFilter = user ? { } : {};
     const pendingOnlyFilter = { ...hideAppliedFilter, ...userFilter };
 
     const { jobs, availableJobsCount, isLoading } = useTracker(() => {
