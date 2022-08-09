@@ -1,20 +1,18 @@
+import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
-import { JobsCollection } from '/imports/api/JobsCollection';
 
-export const JobForm = () => {
-  const [text, setText] = useState("");
+
+export const JobForm = ({user}) => {
+  const [text, setText] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (!text) return;
 
-    JobsCollection.insert({
-        text: text.trim(),
-        createdAt: new Date()
-    });
+    Meteor.call('jobs.insert', text);
 
-    setText("");
+    setText('');
 
   };
 
