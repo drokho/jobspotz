@@ -37,7 +37,10 @@ export const LoginForm = () => {
                 onChange={e => setPassword(e.target.value)}
             />
         </div>
-      <button type="submit">Log In</button>
+    <button type="submit">Log In</button>
+        <div>
+            New User? <a href="/register">Create an Account</a>
+        </div>
     </form>
   );
 };

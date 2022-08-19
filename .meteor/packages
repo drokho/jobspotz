@@ -23,3 +23,5 @@ dev-error-overlay
 accounts-password
 accounts-github
 service-configuration
+accounts-ui
+jquery

@@ -1,12 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
 import { useTracker } from 'meteor/react-meteor-data';
 import { JobsCollection } from '/imports/db/JobsCollection';
 import { Job } from './Job';
 import { JobForm } from './JobForm';
 import { LoginForm } from './LoginForm';
+
+
 
 const toggleChecked = ({ _id, isChecked }) => 
     Meteor.call('jobs.setIsChecked', _id, !isChecked);
@@ -60,9 +61,7 @@ export const App = () => {
     
     return (
         <div>
-            <div className="container header-container">
-                <h1 className="site-title">JobSpotz!</h1>
-            </div>
+            
             
             {user ? ( 
                 <>
