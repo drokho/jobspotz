@@ -33,6 +33,16 @@ body {
     background-position: center center;
 }
 
+.content-container {
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 50px;
+}
+
 .site-title {
     margin: 0;
     font-size: 0;
@@ -59,10 +69,6 @@ body {
 .user button:hover {
     background-color: var(--clear);
     color: var(--link-hover)
-}
-
-.content-container {
-    padding: 20px;
 }
 
 .job-form input {
@@ -169,30 +175,30 @@ li input {
     border-left-color: var(--delete);
 }
 
-
-.login-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 80px 50px;
-}
-
-.login-form div {
+.account-form div {
     padding-bottom: 30px;
 }
 
-.login-form label {
+.account-form label {
     display: block;
 }
 
-.login-form input {
+.account-form input,
+.account-form textarea {
     width: 100%;
 }
 
-.login-form button {
+.account-form textarea {
+    background-color: var(--input-bg);
+    border: none;
+    height: 100px;
+}
+
+.account-form button {
     width: 150px;
 }
 
-.login-form .github-btn {
+.account-form .github-btn {
     width: 100%;
     border: 1px solid #e1e5f0;
     background-color: #fff;

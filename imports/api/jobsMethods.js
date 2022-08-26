@@ -3,7 +3,7 @@ import { check } from 'meteor/check';
 import { JobsCollection } from '/imports/db/JobsCollection';
  
 Meteor.methods({
-    'jobs.insert'(text) {
+    'jobs.insert'(text, description) {
         check(text, String);
 
         if (!this.userId) {
@@ -12,6 +12,7 @@ Meteor.methods({
 
         JobsCollection.insert({
             text,
+            description,
             createdAt: new Date,
             userId: this.userId,
         })
