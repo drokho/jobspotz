@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
+import React, { useEffect } from 'react';
+import { LoginForm } from './LoginForm';
 
 export const Loading = () => {
 
-  return (
+    return (
     <div className="container content-container">
-        <p>Loading...</p>
+       { Meteor.loggingIn() ? 'Loading...' : <LoginForm />}
     </div>
-  );
+    );
 };
