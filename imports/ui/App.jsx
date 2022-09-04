@@ -8,6 +8,7 @@ import { YourJobs } from './YourJobs.jsx';
 import { Register } from './Register.jsx';
 import { Login } from './Login.jsx';
 import { JobFull } from './JobFull.jsx';
+import { JobEdit } from './JobEdit.jsx';
 import { Navbar } from './Navbar.jsx';
 import { Loading } from './Loading.jsx';
 
@@ -33,6 +34,7 @@ export const App = () => {
                     <Route exact path="register" element={ <Register /> } />
                     <Route exact path="login" element={ <Login /> } />
                     <Route exact path="job/:id" element={ <JobFull /> } />
+                    <Route exact path="edit/:id" element={ <JobEdit /> } />
 
                 </Routes>
             </Router> 

@@ -12,9 +12,6 @@ const toggleChecked = ({ _id, isChecked }) =>
     Meteor.call('jobs.setIsChecked', _id, !isChecked);
 
 
-
-
-
 export const JobsList = () => {
   
     const user = useTracker(() => Meteor.user());

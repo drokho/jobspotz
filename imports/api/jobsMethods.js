@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+import { Session } from 'meteor/session';
 import { JobsCollection } from '/imports/db/JobsCollection';
  
 Meteor.methods({
@@ -17,6 +18,8 @@ Meteor.methods({
             userId: this.userId,
         })
     },
+
+    
 
     'jobs.remove'(jobId) {
         check(jobId, String);
@@ -38,22 +41,35 @@ Meteor.methods({
         check(jobId, String);
         check(isChecked, Boolean);
 
-        /*
-        if (!this.userId) {
-            throw new Meteor.Error('Not authorized.');
-        }
-        */
         const job = JobsCollection.findOne({ _id: jobId, userId: this.userId });
 
-        /*
-        if (!job) {
-            throw new Meteor.Error('Access Denied');
-        }
-        */
         JobsCollection.update(jobId, {
             $set: {
                 isChecked
             }
         });
-    }
+    },
+
+    'jobs.update'(obj) {
+        check(obj.text, String);
+        check(obj.description, String);
+
+        if (!this.userId) { throw new Meteor.Error('Not authorized.'); }
+
+        const job = JobsCollection.findOne({ _id: obj.jobId, userId: this.userId });
+        if (!job) { throw new Meteor.Error('Access Denied'); }
+
+        if (JobsCollection.update( 
+            { _id: obj.jobId }, 
+            {$set: {
+                    text: obj.text,
+                    description: obj.description
+                }
+            }, 
+        )) {
+            return 'Job Updated!'
+        } else {
+            return 'Something went wrong.'
+        }
+    },
 });

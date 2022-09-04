@@ -12,16 +12,14 @@ export const Navbar = () => {
         Meteor.logout();
         navigate('/login');
     }
-
-
-
+    
     return (
 
         <div className="container user">
             {  user ? (
                 <>
                     Welcome back,  { user.username }!  
-                    <a href="your-jobs">Your Jobs</a>
+                    <a href="/your-jobs">Your Jobs</a>
                     <button  onClick={logout} >Logout</button>
                 </> ) : ( 
                 <>

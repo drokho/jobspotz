@@ -15,8 +15,7 @@ const insertJob = (jobText, user) =>
 const SEED_USERNAME = 'bgamble';
 const SEED_PASSWORD = 'password';
 
-Meteor.startup(() => {
-
+Meteor.startup(() => {  
     
     
     if (!Accounts.findUserByUsername(SEED_USERNAME)){
