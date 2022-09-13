@@ -17,10 +17,12 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="container form-container">
+    <div className="login-form container-fluid">
+        <form onSubmit={submit}>
         <h1>Login</h1>
-        <form onSubmit={submit} className="account-form">
-            <LoginWithGithub />
+            <div>
+                <LoginWithGithub />
+            </div>
             <div>
                 <label htmlFor="username">Username</label>
 
@@ -43,7 +45,9 @@ export const LoginForm = () => {
                     onChange={e => setPassword(e.target.value)}
                 />
             </div>
-        <button type="submit">Log In</button>
+            <div>
+            <button type="submit">Log In</button>
+            </div>
             <div>
                 New User? <a href="/register">Create an Account</a>
             </div>

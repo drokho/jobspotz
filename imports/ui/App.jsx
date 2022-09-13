@@ -9,6 +9,7 @@ import { Register } from './Register.jsx';
 import { Login } from './Login.jsx';
 import { JobFull } from './JobFull.jsx';
 import { JobEdit } from './JobEdit.jsx';
+import { PageHeader } from './PageHeader.jsx';
 import { Navbar } from './Navbar.jsx';
 import { Loading } from './Loading.jsx';
 
@@ -21,12 +22,8 @@ export const App = () => {
     return (
         <div>
             <Router history={browserHistory}>
-                <div className="container header-container">
-                    <h1>
-                        <a href="/" className="site-title">JobSpotz!</a>
-                    </h1>
-                </div>
-                <Navbar />
+                <PageHeader />
+                
                 <Routes>
                     <Route exact path="new-job" element={<NewJob />} />
                     <Route exact path="your-jobs" element={ user ? <YourJobs /> : <Loading /> } />
@@ -38,6 +35,9 @@ export const App = () => {
 
                 </Routes>
             </Router> 
+            <div className="footer container-fluid align-center dark-bg">
+                &copy; Copyright 2022 Jobspotz.com
+            </div>
         </div>
         
         

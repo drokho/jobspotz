@@ -5,7 +5,7 @@ import { LoginForm } from './LoginForm';
 export const Loading = () => {
 
     return (
-    <div className="container content-container">
+    <div className="content-container">
        { Meteor.loggingIn() ? 'Loading...' : <LoginForm />}
     </div>
     );

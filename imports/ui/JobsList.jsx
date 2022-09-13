@@ -54,21 +54,17 @@ export const JobsList = () => {
     }`;
     
     return (
-        <div>
-            <div className="container content-container">
-                <h2>Jobs Waiting for your Application: {availableJobsTitle}</h2>
-                <div>
-                    { user && <a href="new-job">Post a New Job</a> }
-                </div>
-                
-                { user &&
-                <div className="filter">
-                    <button onClick={() => setHideApplied(!hideApplied)}>
-                        {hideApplied ? 'Show All' : 'Hide Applied'}
-                    </button>
-                </div> }
-
-                {isLoading && <div className="loading">loading...</div>}
+        <div className="jobs-list">
+            <div className="container-fluid align-center drop-shadow">
+                <h1>There are {availableJobsTitle} Jobs Near You</h1>
+                <h2>That match your search criteria: 
+                    <span className="filter">x Filter 1</span>, 
+                    <span className="filter">x Filter 2</span>, 
+                    <span className="filter">x Filter 3</span>
+                </h2>
+            </div>
+            <div className="container-fluid map-container">
+                <h2>{isLoading && <div className="loading">loading...</div>}</h2>
 
                 <ul>
                     { jobs.map(job => <JobSmall 
@@ -78,6 +74,13 @@ export const JobsList = () => {
                     />) }
                 </ul>
             </div>
+            { /*user && <a href="new-job">Post a New Job</a> */}
+            { /* user &&
+                <div className="filter">
+                    <button onClick={() => setHideApplied(!hideApplied)}>
+                        {hideApplied ? 'Show All' : 'Hide Applied'}
+                    </button>
+                    </div> */}
         </div>
     );
      

@@ -21,10 +21,10 @@ export const Register = () => {
 
     return (
         
-        <div className="container form-container">
-            <h1>Register</h1>
+        <div className="register-form container-fluid">
+            
             <form onSubmit={submit} className="account-form">
-                
+                <h1>Register</h1>
                 <div>
                     <label htmlFor="username">Username</label>
 
@@ -47,7 +47,9 @@ export const Register = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>
-            <button type="submit">Register</button>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
                 <div>
                     Already have an account?  <a href="/">Login</a>
                 </div>

@@ -50,17 +50,19 @@ export const YourJobs = () => {
 
     
     return (
-        <div>
+        <div className="your-jobs">
             { user ? ( 
             <>
-                <div className="container content-container">
-                    <h1>Jobs You Have Posted: {availableJobsTitle}</h1>
-                    <div>
+                <div className="container-fluid align-center drop-shadow">
+                    <h1>You Have Posted {availableJobsTitle} Jobs</h1>
+                    <h2>
                         <a href="new-job">Post a New Job</a> | <a href="/">Back to Jobs Listings</a>
-                    </div>
-                    
-                    {isLoading && <div className="loading">loading...</div>}
-
+                    </h2>
+                </div>
+                <div className="container-fluid">
+                    <h2>
+                        {isLoading && <div className="loading">loading...</div>}
+                    </h2>
                     <ul>
                         { jobs.map(job => <JobSmall 
                             key={ job._id} 

@@ -23,10 +23,8 @@ export const JobEdit = () => {
 
 
   return (
-    <div className="container form-container">
-        <h1>Edit Job Posting</h1>
+    <div className="container-fluid">
         { job && <JobForm job={job} /> }
-        <a href="/your-jobs">Back to Your Jobs</a>
     </div>
   );
 

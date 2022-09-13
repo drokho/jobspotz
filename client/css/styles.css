@@ -1,135 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
 :root {
-    --button: #0c7aef;
-    --button-hover: #1c68ba;
-    --link:#0c7aef;
-    --link-hover:#4598ef;
+    --button: #662D91;
+    --button-hover: red;
+    --link:#662D91;
+    --link-hover: red;
     --delete: transparent;
     --delete-hover: red;
     --button-text: #fff;
     --input-bg: #efefef;
     --success: #2db42d;
     --clear: transparent;
+
+
+    --primary: #2a2aff;
+    --secondary: #fff;
+    --tertiary: #82c680;
+    --quarternary: #eabd51;
+    --warning: #EF1B1B;
+    --primary-shade: #7873aa;
+    --gray-mid: #9d9d9d;
+    --dark-bg: #1e1c35;
+    --dark-bg-text: #fff;
+    --light-bg: #fff;
+    --light-bg-text: #000;
+    --search-bg: #fff;
 }
 
+/* base classes */
 
 * {
     box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-.container {
+img {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+
+/* framework-classes */
+
+.container-fluid {
+    width: 100%;
     margin: 0;
-    padding: 0;
-}
-
-.header-container {
-    padding: 20px 0;
-    background-color: #ccc;
-    background-image: url(/images/header-bg.jpg);
-    background-size: cover;
-    background-position: center center;
-}
-
-.content-container {
     padding: 20px;
 }
 
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 30px 50px;
+.grid {
+    display: flex;
 }
 
-.site-title {
-    display: block;
-    margin: 0;
-    font-size: 0;
-    height: 100px;
-    background-image: url(/images/jobspotz-logo.png);
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
+.grid > div {
+    flex-grow: 1;
 }
 
-.container.user {
-    padding: 10px 20px;
-    background-color: #333;
+.grid > .grow-2 {
+    flex-grow: 2;
+}
+
+.grid > div > * {
+    margin-bottom: 15px;
+}
+
+button, 
+.button {
+    display: inline-block;
+    border: 0;
     color: #fff;
+    background-color: var(--primary);
+    padding: 12px 30px;
+    border-radius: 5px;
+    min-width: 130px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    line-height: 1.15;
+    cursor: pointer;
+}
+
+button.secondary,
+.button.secondary, 
+button.secondary *,
+.button.secondary * {
+    background-color:  var(--secondary);
+    color: var(--primary);
+}
+
+button svg,
+.button svg {
+    margin-right: 10px;
+}
+
+button + button, 
+.button + .button, 
+button + .button, 
+.button + button {
+    margin-left: 10px;
+}
+
+form {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+form input, 
+form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: var(--input-bg);
+    border: none;
+}
+
+textarea {
+    height: 100px;
+}
+
+form button {
+    width: 100%;
+}
+
+.card {
+    max-width: 500px;
+    border-radius: 5px;
+    background-color: var(--light-bg);
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.card-title {
+    margin-top: 10px;
+}
+
+
+
+/* utility classes */
+
+.dark-bg {
+    background-color: var(--dark-bg);
+    color: var(--dark-bg-text);
+}
+
+.dark-bg * {
+    color: var(--dark-bg-text);
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
     text-align: right;
 }
 
-.user a {
-    display: inline-block;
-    padding: 0 10px;
-    color: var(--link);
-    text-decoration: none;
+.drop-shadow {
+    position: relative;
+    box-shadow: 0px 9px 10px 3px rgb(0 0 0 / 20%);
 }
 
-.user a:hover {
-    color: var(--link-hover);
+.cursor-pointer {
+    cursor: pointer;
 }
 
-.user button {
+
+
+
+
+
+
+/* context classes */
+
+.page-header + .container-fluid {
+    min-height: calc(100vh - 375px);
+}
+
+.header-logo-container {
+    width: 400px;
+}
+
+.header-logo-container + div {
+    width: calc(100% - 400px);
+    padding-top: 15px;
+}
+
+.header-logo-container > div {
+    margin-bottom: 0;
+}
+
+.search {
+    padding-top: 20px;
+}
+
+.search input {
+    width: 75%;
+    background-color: var(--search-bg);
+    color: initial;
+    padding: 12px 15px;
+    border-radius: 5px 0 0 5px;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+}
+
+.input-action {
+    background-color: var(--search-bg);
+    color: initial;
+    font-size: 0px;
+    padding: 9px 5px;
+    border-radius: 0 5px 5px 0;
+    vertical-align: bottom;
+    min-width: auto;
+}
+
+.input-action * {
+    font-size: 29px;
+    color: var(--light-bg-text);
+}
+
+.input-action + .input-action {
+    margin-left: 0;
+}
+
+.input-action:not(:last-of-type) {
+    border-radius: 0;
+}
+
+.menu-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.menu-container.open {
+    display: block;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-    background-color: var(--clear);
-    color: var(--link);
+    padding: 20px 0 20px 50px;
+    background-color: var(--dark-bg);
+    text-align: left;
 }
 
-.user button:hover {
-    background-color: var(--clear);
-    color: var(--link-hover)
+.menu-close {
+    background-color:  transparent;
+    font-size:  24px;
+    font-weight: bold;
 }
 
-.job-form input {
-    width: calc(100% - 100px);
+.menu-close:hover, 
+.menu-close:hover * {
+    color: var(--warning);
 }
 
-.job-posting {
-    border-bottom:  1px solid #000;
+.menu h2 {
+    margin-top: 0;
+    font-size: 48px;
 }
 
-.job-posting > span {
-    width: calc(100% - 33px);
+.menu ul {
+    padding-left: 0;
+}
+
+.menu li {
+    font-size: 24px;
+}
+
+.menu li a,
+.nav-text-only {
     display: inline-block;
+    text-decoration: none;
+    width: 50%;
+    padding: 10px 0;
 }
 
-.job-posting-top label {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.menu li a:hover,
+.nav-text-only:hover,
+.menu li a:hover *,
+.nav-text-only:hover * {
+    background-color: var(--primary);
+    padding-left: 10px;
+    border-radius: 5px;
 }
 
-.job-posting-top h3 {
-    margin: 12px 0px 20px 0;
+.menu li svg {
+    width: 30px;
+    padding-right: 20px;
+}
+
+.menu .list-group {
+    margin-top: 30px;
+}
+
+
+
+
+.jobs-list ul {
+    max-width: 550px;
+    max-height: 805px;
+    overflow: auto;
+    padding-right: 20px;
+}
+
+.map-container {
+    background-image: url('/images/map.jpg');
+    background-position: top right;
+}
+
+.job-company {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-shade);
+}
+
+.job-pay {
+    font-size: 20px;
+    color: var(--tertiary);
+    font-weight: bold;
+}
+
+.job-date {
+    color: var(--gray-mid);
 }
 
 .job-posting input[type="checkbox"] {
     display: none;
 }
 
-.job-posting {
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.button {
-    display: inline-block;
-    margin: 5px 10px 5px 0;
-    padding: 5px;
-    background-color: var(--button);
-    color: var(--button-text);
-    text-decoration: none;
-    width: 100px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: var(--button-hover);
+.job-save {
+    font-size: 30px;
+    color: var(--quarternary)
 }
 
 .apply {
@@ -141,8 +373,6 @@ body {
     background-color: var(--success);
 }
 
-
-
 input:checked + span .button.apply {
     display: none;
 }
@@ -151,114 +381,24 @@ input:checked + span .button.apply + .applied {
     display: inline-block;
 }
 
-.job-form button {
-    width: 100px;
+
+
+
+.full-job-container {
+    padding: 10px 0px 50px 0;
+    font-size: 18px;
 }
 
-input,
-button {
-    padding: .6rem;
-    border: none;
-}
 
-input {
-    background-color: var(--input-bg);
-}
 
-button {
-    margin: 1rem 0;
-    background-color: var(--button);
-    color: #fff;
-    cursor: pointer;
-}
 
-button:hover {
-    background-color: var(--button-hover);
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    margin: 0;
-    padding: 0;
-}
-
-li input {
-    display: inline-block;
-    margin-right: .6rem;
-}
-
-.delete {
-    margin: 5px 0 5px 5px;
-    padding: 0px 6px;
-    font-size: 25px;
-    background-color: var(--delete);
-    color: var(--delete-hover);
-    border-left: 1px solid #000;
-    position: relative;
-    bottom: -4px;
-}
-
-.delete:hover {
-    background-color: var(--delete-hover);
-    color: var(--button-text);
-    border-left-color: var(--delete);
-}
-
-.account-form div {
-    padding-bottom: 30px;
-}
-
-.account-form label {
-    display: block;
-}
-
-.account-form input,
-.account-form textarea {
-    width: 100%;
-}
-
-.account-form textarea {
-    background-color: var(--input-bg);
-    border: none;
-    height: 100px;
-}
-
-.account-form button {
-    width: 150px;
-}
-
-.account-form .github-btn {
-    width: 100%;
-    border: 1px solid #e1e5f0;
+.github-btn {
     background-color: #fff;
-    margin: 0 auto 16px;
-    color: black;
-  }
-  
-  .github-btn > span {
-    display: inline-block;
-    margin-left: 4px;
-    position: relative;
-    top: -2px;
+    color: #000;
+    border: 1px solid #000;
+}
 
-  }
-
-  .loading {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  
-    justify-content: center;
-    align-items: center;
-  
-    font-weight: bold;
-  }
-
-  .full-job-container {
-    margin-bottom: 50px;
-  }
+.footer {
+    padding-top: 50px;
+    padding-bottom: 106px;
+}

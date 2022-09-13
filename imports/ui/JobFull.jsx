@@ -26,7 +26,7 @@ export const JobFull = () => {
 
 
   return (
-    <div className="container content-container">
+    <div className="container-fluid">
         { job ? (
             <div className="full-job-container">
                 <h1>{ job.text  }</h1>
@@ -75,7 +75,10 @@ export const JobFull = () => {
         </div>
         
             */}
-        <a href="/">Back to Jobs List</a>
+        <div>
+            <a href="/">Back to Jobs List</a>
+        </div>
+        
     </div>
   );
 };

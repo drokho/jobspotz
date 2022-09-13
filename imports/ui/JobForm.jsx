@@ -49,7 +49,8 @@ export const JobForm = ({user, job}) => {
   };
 
   return (
-    <form className="account-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+        <h1>{ job ? 'Edit Job Posting' : 'Create a Job Posting' }</h1>
         <div>
             <label htmlFor="text">Job Post Name</label>
             <input
@@ -60,7 +61,7 @@ export const JobForm = ({user, job}) => {
             />
 
         </div> 
-      
+    
         <div>
             <label htmlFor="description">Description</label>
             <textarea
@@ -70,11 +71,16 @@ export const JobForm = ({user, job}) => {
                 
             ></textarea>
         </div>
-
-      <button type="submit">{ job ? 'Update Job' : 'Create Job' }</button>
+        <div>
+            <button type="submit">{ job ? 'Update Job' : 'Create Job' }</button>
+        </div>
         <div>
             { success }
         </div>
+        <div>
+            <a href="/your-jobs">Back to Your Jobs</a>
+        </div>
     </form>
+    
   );
 };
