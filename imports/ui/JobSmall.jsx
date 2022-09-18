@@ -4,10 +4,19 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-export const JobSmall = ({ job, onCheckboxClick, onDeleteClick, edit }) => {
+export const JobSmall = ({ job, onCheckboxClick, edit }) => {
 
     // setting edit to true hides the apply button and shows the edit and delete buttons.
     const user = useTracker(() => Meteor.user());
+    const payType = () => {
+        if(job.payType == 'hourly') {
+            return '/hr';
+        }
+
+        if(job.payType == 'salary') {
+            return '/yr Salary';
+        }
+    }
 
   return (
     <li className="job-posting card drop-shadow">
@@ -22,20 +31,18 @@ export const JobSmall = ({ job, onCheckboxClick, onDeleteClick, edit }) => {
             </div>
         </div>
         <div className="job-company">
-            Contoso, LTD - Ann Arbor, MI
+            { job.company } - { job.city }, { job.state }
         </div>
         <div className="job-pay">
-            $30-$35/hr
+            ${ job.pay + payType() }
         </div>
         <div className="grid">
             <div className="job-date">
-                9/1/2022
+                { job.postedDate }
             </div>
             <div className="align-right">
                 
                 <label htmlFor={ 'apply-now-' + job._id } >
-                    
-                    
                     <input 
                         id={ 'apply-now-' + job._id }
                         name={ 'apply-now-' + job._id }

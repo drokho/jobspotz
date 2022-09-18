@@ -18,11 +18,18 @@ export const JobFull = () => {
         const jobSub = Meteor.subscribe('jobs');
         const job = JobsCollection.findOne({ _id:id });
 
-        console.log(job)
-
         return job;
-
     });
+
+    const payType = () => {
+        if(job.payType == 'hourly') {
+            return '/hr';
+        }
+
+        if(job.payType == 'salary') {
+            return '/yr Salary';
+        }
+    }
 
 
   return (
@@ -30,51 +37,21 @@ export const JobFull = () => {
         { job ? (
             <div className="full-job-container">
                 <h1>{ job.text  }</h1>
+                <h2>{ job.company }</h2>
+                <address>
+                    { job.streetAddress }<br />
+                    { job.city } { job.state }, { job.zip }
+                </address>
+                <div>
+                    Pay: { job.pay + payType() }
+                </div>
+                <div>
+                    { job.postedDate }
+                </div>
                 <div>
                     { job.description }
                 </div>
             </div>) : ( 'Loading...') }
-        
-        { /*
-        <div className="job-posting-top">
-            
-            <label htmlFor={ 'apply-now-' + job._id } >
-                <h3>
-                    {job.text}
-                </h3>
-                
-                <input 
-                    id={ 'apply-now-' + job._id }
-                    name={ 'apply-now-' + job._id }
-                    type="checkbox"
-                    checked={!!job.isChecked}
-                    onClick={() => onCheckboxClick(job)}
-                    readOnly
-                />
-                { edit ? ( 
-                        <a className="button" href="">Edit</a>
-                    ) : (
-                        <span>
-                            <span className="button apply">Apply</span>
-                            <span className="button applied">Applied!</span>
-                        </span>
-                )}
-            </label> */ }
-                    
-            { /*edit ? (
-                <>
-                    <button className="delete" onClick={ () => onDeleteClick(job) }>&times;</button>
-                </> ) : (
-                    ''
-                ) */}
-    { /*
-        </div>
-        <div className="job-posting-bottom">
-            <div className="job-description">{ job.description }</div>
-            <a href="" className="show-more">Read More...</a>
-        </div>
-        
-            */}
         <div>
             <a href="/">Back to Jobs List</a>
         </div>

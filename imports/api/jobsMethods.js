@@ -4,7 +4,7 @@ import { Session } from 'meteor/session';
 import { JobsCollection } from '/imports/db/JobsCollection';
  
 Meteor.methods({
-    'jobs.insert'(text, description) {
+    'jobs.insert'(text, description, company, streetAddress, city, state, zip, pay, payType, postedDate) {
         check(text, String);
 
         if (!this.userId) {
@@ -14,6 +14,14 @@ Meteor.methods({
         JobsCollection.insert({
             text,
             description,
+            company,
+            streetAddress, 
+            city, 
+            state,
+            zip, 
+            pay,
+            payType,
+            postedDate,
             createdAt: new Date,
             userId: this.userId,
         })
@@ -34,7 +42,11 @@ Meteor.methods({
             throw new Meteor.Error('Access Denied');
         }
 
-        JobsCollection.remove(jobId);
+        if(JobsCollection.remove(jobId)) {
+            return 'Job Removed!'
+        } else {
+            return 'Something went wrong.'
+        }
     },
 
     'jobs.setIsChecked'(jobId, isChecked) {
@@ -53,6 +65,14 @@ Meteor.methods({
     'jobs.update'(obj) {
         check(obj.text, String);
         check(obj.description, String);
+        check(obj.company, String);
+        check(obj.streetAddress, String);
+        check(obj.city, String);
+        check(obj.state, String);
+        check(obj.zip, String);
+        check(obj.pay, String);
+        check(obj.payType, String);
+        check(obj.postedDate, String); 
 
         if (!this.userId) { throw new Meteor.Error('Not authorized.'); }
 
@@ -63,7 +83,16 @@ Meteor.methods({
             { _id: obj.jobId }, 
             {$set: {
                     text: obj.text,
-                    description: obj.description
+                    description: obj.description,
+                    company: obj.company,
+                    streetAddress: obj.streetAddress, 
+                    city: obj.city, 
+                    state: obj.state,
+                    zip: obj.zip,
+                    pay: obj.pay,
+                    payType: obj.payType,
+                    postedDate: obj.postedDate
+
                 }
             }, 
         )) {

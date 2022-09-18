@@ -15,7 +15,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
-export const MainNav = () => {
+export const MobileNav = () => {
 
     const navigate = useNavigate();
     const user = useTracker(() => Meteor.user(), []);
@@ -36,21 +36,19 @@ export const MainNav = () => {
 
     return (
 
-        <div className="main-nav">
-            <div className="stationary-nav">
-                <div className="main-buttons">
-                    <button className="secondary" onClick={openMenu}>
-                        <FontAwesomeIcon icon={faBars} />Menu
-                    </button>
-                    { !user && <a href="/login" className="button">
-                        <FontAwesomeIcon icon={faRightToBracket} />Login
-                    </a> }
-                    { user && <button onClick={logout}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />Log Out
-                    </button> }
-                </div>
+        <div className="mobile-nav">
+            <div className="main-buttons">
+                <button  onClick={openMenu}>
+                    <FontAwesomeIcon icon={faBars} />Menu
+                </button>
+                { !user && <a href="/login" className="button">
+                    <FontAwesomeIcon icon={faRightToBracket} />Login
+                </a> }
+                { user && <button onClick={logout}>
+                    <FontAwesomeIcon icon={faRightFromBracket} />Log Out
+                </button> }
             </div>
-            <div className="menu-container">
+            <div className="mobile-menu-container">
                 <div className="menu">
                     <div className="grid">
                         <div>
@@ -108,19 +106,6 @@ export const MainNav = () => {
                             </a> 
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div className="mobile-nav">
-                <div className="main-buttons">
-                    <button  onClick={openMenu}>
-                        <FontAwesomeIcon icon={faBars} />Menu
-                    </button>
-                    { !user && <a href="/login" className="button">
-                        <FontAwesomeIcon icon={faRightToBracket} />Login
-                    </a> }
-                    { user && <button onClick={logout}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />Log Out
-                    </button> }
                 </div>
             </div>
         </div>

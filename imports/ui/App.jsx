@@ -10,7 +10,6 @@ import { Login } from './Login.jsx';
 import { JobFull } from './JobFull.jsx';
 import { JobEdit } from './JobEdit.jsx';
 import { PageHeader } from './PageHeader.jsx';
-import { Navbar } from './Navbar.jsx';
 import { Loading } from './Loading.jsx';
 
 

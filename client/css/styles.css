@@ -143,7 +143,7 @@ form button {
 }
 
 .card {
-    max-width: 500px;
+    max-width: 550px;
     border-radius: 5px;
     background-color: var(--light-bg);
     margin-bottom: 30px;
@@ -210,7 +210,7 @@ form button {
 }
 
 .search {
-    padding-top: 20px;
+    margin-top: 20px;
 }
 
 .search input {
@@ -247,7 +247,8 @@ form button {
     border-radius: 0;
 }
 
-.menu-container {
+.menu-container, 
+.mobile-menu-container {
     display: none;
     position: fixed;
     top: 0;
@@ -258,7 +259,8 @@ form button {
     background-color: rgba(0, 0, 0, .4);
 }
 
-.menu-container.open {
+.menu-container.open,
+.mobile-menu-container.open {
     display: block;
 }
 
@@ -324,14 +326,57 @@ form button {
     margin-top: 30px;
 }
 
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--dark-bg);
+    left: 0;
+    z-index: 10;
+    padding: 10px;
+}
 
+.mobile-nav .main-buttons {
+    text-align: center;
+}
 
+.mobile-nav .main-buttons .button,
+.mobile-nav .main-buttons button {
+    padding: 15px;
+    width: 40px;
+    height: 40px;
+    min-width: auto;
+    border-radius: 1000px;
+    font-size: 0;
+    line-height: 2;
+    vertical-align: middle;
+    background-color: var(--light-bg);
+}
 
-.jobs-list ul {
+.mobile-nav .main-buttons button {
+    padding: 11px;
+}
+
+.mobile-nav .main-buttons .button svg,
+.mobile-nav .main-buttons button svg {
+    font-size: 20px;
+}
+
+.mobile-nav .main-buttons .button * ,
+.mobile-nav .main-buttons button * {
+    color: var(--primary);
+}
+
+.jobs-list ul,
+.your-jobs ul {
     max-width: 550px;
+    width: 40%;
+    min-width: 400px;
     max-height: 805px;
     overflow: auto;
-    padding-right: 20px;
+    padding-right: 15px;
+    padding-left: 0;
 }
 
 .map-container {
@@ -401,4 +446,98 @@ input:checked + span .button.apply + .applied {
 .footer {
     padding-top: 50px;
     padding-bottom: 106px;
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .header-logo-container {
+       width: 50%;
+       padding-right: 50px;
+    }
+
+    .header-logo-container img {
+        width: 100%;
+    }
+
+    .header-logo-container + div {
+        width: 50%;
+    }
+
+    .main-buttons button,
+    .main-buttons a {
+        width: calc(50% - 5px);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .search input {
+        width: calc(100% - 98px);
+    }
+
+    .menu {
+        padding: 20px;
+    }
+    
+    .menu li a, 
+    .nav-text-only {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .page-header {
+        padding: 5px;
+    }
+
+    .page-header + .container-fluid {
+        min-height: calc(100vh - 286px);
+    }
+
+    .header-logo-container {
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .header-logo-container img {
+        width: 250px;
+    }
+
+    .header-logo-container + div {
+        width: 0;
+    }
+
+    .stationary-nav,
+    .search {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .menu-close {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+    .jobs-list ul,
+    .your-jobs ul {
+        width: 100%;
+        min-width: 0;
+        padding-right: 0;
+        overflow: visible;
+        max-height: initial;
+    }
+    
+
+    
+
+    
+
+
 }
