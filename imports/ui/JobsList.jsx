@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { JobsCollection } from '/imports/db/JobsCollection';
 import { JobSmall } from './JobSmall';
 import { Loading } from './Loading';
+import { Map } from './Map';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,7 +14,8 @@ const toggleChecked = ({ _id, isChecked }) =>
 
 
 export const JobsList = () => {
-  
+    const [mobileMap, setMobileMap] = useState('');
+    const [mobileMapTxt, setMobileMapTxt] = useState('Show on Map');
     const user = useTracker(() => Meteor.user());
     const [hideApplied, setHideApplied] = useState(false);
     const hideAppliedFilter = { isChecked: { $ne: true } };
@@ -24,12 +26,6 @@ export const JobsList = () => {
     const { jobs, availableJobsCount, isLoading } = useTracker(() => {
 
         const noDataAvailable = { jobs: [], availableJobsCount: 0 };
-
-        /*
-        if( !Meteor.user() ) {
-            return noDataAvailable;
-        }
-        */
         const handler = Meteor.subscribe('jobs');
 
         if( !handler.ready() ) {
@@ -52,35 +48,48 @@ export const JobsList = () => {
     const availableJobsTitle = `${
         availableJobsCount ? `${availableJobsCount}` : '0'
     }`;
+
+    const toggleMobileMap = () => {
+        if (mobileMap == '') {
+            setMobileMap('show');
+            setMobileMapTxt('Show as List');
+        }
+        else if (mobileMap == 'show') {
+            setMobileMap('');
+            setMobileMapTxt('Show On Map');
+        }
+    }
+6696
+    
     
     return (
         <div className="jobs-list">
-            <div className="container-fluid align-center drop-shadow">
+            <div className="jobs-list-header container-fluid align-center drop-shadow">
                 <h1>There are {availableJobsTitle} Jobs Near You</h1>
                 <h2>That match your search criteria: 
                     <span className="filter">x Filter 1</span>, 
                     <span className="filter">x Filter 2</span>, 
                     <span className="filter">x Filter 3</span>
                 </h2>
+                
+                <div className="map-list">
+                    <button onClick={ toggleMobileMap }>{ mobileMapTxt }</button> 
+                </div>
             </div>
-            <div className="container-fluid map-container">
-                <h2>{isLoading && <div className="loading">loading...</div>}</h2>
-
-                <ul>
+            <div className='container-fluid map-container'>
+                <div className={ 'map ' + mobileMap}>
+                    <Map jobs={ jobs }/>
+                </div>
+                
+                { isLoading && <h2 className="loading">loading...</h2> }
+                <ul className={ mobileMap }>
                     { jobs.map(job => <JobSmall 
                         key={ job._id} 
                         job={ job } 
                         onCheckboxClick={toggleChecked}
                     />) }
-                </ul>
+                </ul> 
             </div>
-            { /*user && <a href="new-job">Post a New Job</a> */}
-            { /* user &&
-                <div className="filter">
-                    <button onClick={() => setHideApplied(!hideApplied)}>
-                        {hideApplied ? 'Show All' : 'Hide Applied'}
-                    </button>
-                    </div> */}
         </div>
     );
      

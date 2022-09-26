@@ -51,7 +51,7 @@ export const JobSmall = ({ job, onCheckboxClick, edit }) => {
                         onClick={() => onCheckboxClick(job)}
                         readOnly
                     />
-                    { edit && <a className="button" href={ '/edit/' + job._id }>Edit</a> }
+                    { user && edit && <a className="button" href={ '/edit/' + job._id }>Edit</a> }
                     { user && !edit &&
                         <span>
                             <span className="button apply">Apply</span>

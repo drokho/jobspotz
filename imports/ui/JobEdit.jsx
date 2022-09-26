@@ -13,6 +13,8 @@ export const JobEdit = () => {
     // setting edit to true hides the apply button and shows the edit and delete buttons.
     const { id } = useParams();
 
+    const user = useTracker(() => Meteor.user(), []);
+
     const job = useTracker(() => {
         // jobs is the name of the collection in db/JobsCollection.js
         const jobSub = Meteor.subscribe('jobs');
@@ -21,10 +23,15 @@ export const JobEdit = () => {
         return job;
     });
 
+    let owner = false;
+
+    user && job ? ( job.userId == user._id ? owner = true : owner = false ) : owner = false;
+
 
   return (
     <div className="container-fluid">
-        { job && <JobForm job={job} /> }
+        { user ? ( owner ? ( <JobForm job={job} /> ) : ( <p>Access Denied</p> )) : (<p>Loading...</p>) }
+    
     </div>
   );
 

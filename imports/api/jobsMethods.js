@@ -4,7 +4,7 @@ import { Session } from 'meteor/session';
 import { JobsCollection } from '/imports/db/JobsCollection';
  
 Meteor.methods({
-    'jobs.insert'(text, description, company, streetAddress, city, state, zip, pay, payType, postedDate) {
+    'jobs.insert'(text, description, company, streetAddress, city, state, zip, pay, payType, postedDate, latlong) {
         check(text, String);
 
         if (!this.userId) {
@@ -24,6 +24,7 @@ Meteor.methods({
             postedDate,
             createdAt: new Date,
             userId: this.userId,
+            latlong
         })
     },
 
@@ -91,7 +92,8 @@ Meteor.methods({
                     zip: obj.zip,
                     pay: obj.pay,
                     payType: obj.payType,
-                    postedDate: obj.postedDate
+                    postedDate: obj.postedDate,
+                    latlong: obj.latlong
 
                 }
             }, 

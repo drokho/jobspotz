@@ -11,13 +11,14 @@ import { JobFull } from './JobFull.jsx';
 import { JobEdit } from './JobEdit.jsx';
 import { PageHeader } from './PageHeader.jsx';
 import { Loading } from './Loading.jsx';
+import { Map } from './Map.jsx';
 
 
 
 export const App = () => {
 
     const user = useTracker(() => Meteor.user(), []);
-
+    
     return (
         <div>
             <Router history={browserHistory}>
@@ -31,6 +32,7 @@ export const App = () => {
                     <Route exact path="login" element={ <Login /> } />
                     <Route exact path="job/:id" element={ <JobFull /> } />
                     <Route exact path="edit/:id" element={ <JobEdit /> } />
+                    <Route exact path="/map" element={ <Map /> } />
 
                 </Routes>
             </Router> 
