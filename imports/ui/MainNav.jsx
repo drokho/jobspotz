@@ -39,15 +39,9 @@ export const MainNav = () => {
         <div className="main-nav">
             <div className="stationary-nav">
                 <div className="main-buttons">
-                    <button className="secondary" onClick={openMenu}>
-                        <FontAwesomeIcon icon={faBars} />Menu
+                    <button className="secondary hamburger" onClick={openMenu}>
+                        <FontAwesomeIcon icon={faBars} /><span>Menu</span>
                     </button>
-                    { !user && <a href="/login" className="button">
-                        <FontAwesomeIcon icon={faRightToBracket} />Login
-                    </a> }
-                    { user && <button onClick={logout}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />Log Out
-                    </button> }
                 </div>
             </div>
             <div className="menu-container">

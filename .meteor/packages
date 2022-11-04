@@ -26,3 +26,4 @@ service-configuration
 accounts-ui
 jquery
 session
+fetch

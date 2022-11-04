@@ -6,7 +6,8 @@
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer",
-    "postinstall": "node ./postinstall.js"
+    "postinstall": "node ./postinstall.js",
+    "scrape": "nodemon server/scraper.js"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
@@ -14,11 +15,17 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@googlemaps/google-maps-services-js": "^3.3.16",
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@react-google-maps/api": "^2.13.1",
     "@tinymce/tinymce-react": "^4.2.0",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.1",
     "jquery": "^3.6.0",
     "meteor-node-stubs": "^1.2.1",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-geocode": "^0.2.3",
@@ -30,5 +37,8 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

@@ -41,28 +41,30 @@ export const JobFull = () => {
 
 
   return (
-    <div className="container-fluid full-page-content">
-        <div>
-            <a href="/"><FontAwesomeIcon icon={faChevronLeft} /> Back to Jobs List</a>
+    <div className="container-fluid">
+        <div className="full-page-content">
+            <div>
+                <a href="/"><FontAwesomeIcon icon={faChevronLeft} /> Back to Jobs List</a>
+            </div>
+            { job ? (
+                <div className="full-job-container">
+                    <h1>{ job.text } {owner && <a className="title-edit" href={ '/edit/' + job._id }>Edit</a> }</h1>
+                    <h2>{ job.company }</h2>
+                    <address>
+                        { job.streetAddress }<br />
+                        { job.city } { job.state }, { job.zip }
+                    </address>
+                    <div>
+                        Pay: ${ job.pay + payType() }
+                    </div>
+                    <div>
+                        { job.postedDate }
+                    </div>
+                    <div className="job-description" dangerouslySetInnerHTML={{ __html: job.description }}>
+                    </div>
+                </div>) : ( 'Loading...') 
+            }
         </div>
-        { job ? (
-            <div className="full-job-container">
-                <h1>{ job.text } {owner && <a className="title-edit" href={ '/edit/' + job._id }>Edit</a> }</h1>
-                <h2>{ job.company }</h2>
-                <address>
-                    { job.streetAddress }<br />
-                    { job.city } { job.state }, { job.zip }
-                </address>
-                <div>
-                    Pay: ${ job.pay + payType() }
-                </div>
-                <div>
-                    { job.postedDate }
-                </div>
-                <div className="job-description" dangerouslySetInnerHTML={{ __html: job.description }}>
-                </div>
-            </div>) : ( 'Loading...') 
-        }
     </div>
   );
 };

@@ -174,14 +174,18 @@ export const JobForm = ({user, job}) => {
         inputs.description = '<div>' + $('.mce-content-body').html() + '</div>';
     }
 
-
+ 
   return (
     <>
     { job && <div>
             
         </div> }
         <form onSubmit={handleSubmit}>
-            <h1>{ job ? 'Edit Job Posting' : 'Create a Job Posting' } <button className="text-button" onClick={deleteJob}>Delete This Job</button></h1>
+            { job ? 
+                <h1>Edit Job Posting <button className="text-button" onClick={deleteJob}>Delete This Job</button></h1>
+                :
+                <h1>Create Job Posting</h1>
+            }
             <div>
                 <label htmlFor="text">Job Post Name</label>
                 <input
